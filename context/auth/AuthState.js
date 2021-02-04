@@ -2,12 +2,15 @@ import React, { useReducer } from 'react'
 import propTypes from 'prop-types'
 import authContext from './authContext'
 import authReducer from './authReducer'
-import faker from 'faker'
 import {} from './authTypes'
+
+import initDB from '../../helper/initDB'
+
+initDB()
 
 function AuthState ({ children }) {
   const initialState = {
-    user: {}
+    usuario: {}
   }
   const [state, dispatch] = useReducer(authReducer, initialState)
 
