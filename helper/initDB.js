@@ -4,7 +4,6 @@ faker.locale = 'es_MX'
 
 const initDB = async () => {
   if (typeof window !== 'undefined') {
-    await indexedDB.deleteDatabase('exam')
     const openDB = indexedDB.open('exam', 1)
     openDB.onupgradeneeded = e => {
       const db = e.target.result
@@ -31,7 +30,6 @@ const initDB = async () => {
         tipoUsuario: 'tutor',
         examenes: [1, 2]
       })
-      console.log(faker.helpers.contextualCard())
       usuariosStore.add({
         nombre: faker.name.findName(),
         contrasena: faker.internet.password(),

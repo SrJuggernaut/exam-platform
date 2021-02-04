@@ -4,10 +4,6 @@ import authContext from './authContext'
 import authReducer from './authReducer'
 import {} from './authTypes'
 
-import initDB from '../../helper/initDB'
-
-initDB()
-
 function AuthState ({ children }) {
   const initialState = {
     usuario: {}
