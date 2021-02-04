@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from '@emotion/styled'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
+
+import authContext from '../../../context/auth/authContext'
 
 import Button from '../../../components/ui/Button'
 import Alert from '../../ui/Alert'
@@ -27,6 +29,7 @@ const registerSchema = yup.object().shape({
     .string()
     .min(2, 'Nombre demasiado corto!')
     .required('El nombre es obligatorio'),
+  tipoUsuario: yup.string().required('El tipo de usuario es requerido'),
   correoElectrionico: yup
     .string()
     .email('Inserta un email valido')
@@ -40,8 +43,10 @@ const registerSchema = yup.object().shape({
     .oneOf([yup.ref('contrasena'), null], 'Las contraseñas deben ser iguales')
 })
 function RegisterForm (props) {
+  const auth = useContext(authContext)
+  const { registrarUsuario } = auth
   const handleSubmit = (e) => {
-    e.preventDefault()
+    registrarUsuario(e)
   }
   return (
     <Formik
@@ -58,7 +63,11 @@ function RegisterForm (props) {
         <Form>
           <InputContainer>
             <label htmlFor="nombre">Nombre</label>
-            {errors.nombre && touched.nombre ? <Alert>{errors.nombre}</Alert> : null}
+            {errors.nombre && touched.nombre
+              ? (
+              <Alert>{errors.nombre}</Alert>
+                )
+              : null}
             <RegisterInput
               type="text"
               name="nombre"
@@ -68,7 +77,11 @@ function RegisterForm (props) {
           </InputContainer>
           <InputContainer>
             <label htmlFor="correoElectrionico">Correo electrionico</label>
-            {errors.correoElectrionico && touched.correoElectrionico ? <Alert>{errors.correoElectrionico}</Alert> : null}
+            {errors.correoElectrionico && touched.correoElectrionico
+              ? (
+              <Alert>{errors.correoElectrionico}</Alert>
+                )
+              : null}
             <RegisterInput
               type="email"
               name="correoElectrionico"
@@ -77,8 +90,32 @@ function RegisterForm (props) {
             />
           </InputContainer>
           <InputContainer>
+            <label htmlFor="tipoUsuario">Soy un:</label>
+            {errors.tipoUsuario && touched.tipoUsuario
+              ? (
+              <Alert>{errors.tipoUsuario}</Alert>
+                )
+              : null}
+            <RegisterInput
+              as="select"
+              name="tipoUsuario"
+              id="tipoUsuario"
+              placeholder="tu@correoelectronico.com"
+            >
+              <option value="" defaultValue>
+                Seleccionar
+              </option>
+              <option value="instructor">Instructor</option>
+              <option value="aplicante">Aplicante</option>
+            </RegisterInput>
+          </InputContainer>
+          <InputContainer>
             <label htmlFor="contrasena">Contraseña</label>
-            {errors.contrasena && touched.contrasena ? <Alert>{errors.contrasena}</Alert> : null}
+            {errors.contrasena && touched.contrasena
+              ? (
+              <Alert>{errors.contrasena}</Alert>
+                )
+              : null}
             <RegisterInput
               type="password"
               name="contrasena"
@@ -88,7 +125,11 @@ function RegisterForm (props) {
           </InputContainer>
           <InputContainer>
             <label htmlFor="repContrasena">Repetir contraseña</label>
-            {errors.repContrasena && touched.repContrasena ? <Alert>{errors.repContrasena}</Alert> : null}
+            {errors.repContrasena && touched.repContrasena
+              ? (
+              <Alert>{errors.repContrasena}</Alert>
+                )
+              : null}
             <RegisterInput
               type="password"
               name="repContrasena"

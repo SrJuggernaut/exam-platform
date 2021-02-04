@@ -7,12 +7,11 @@ import { SET_NAVMENU, SET_USERMENU } from './appTypes'
 
 import initDB from '../../helper/initDB'
 
-initDB()
-
 function AppState ({ children }) {
   const initialState = {
     navMenu: false,
-    userMenu: false
+    userMenu: false,
+    db: initDB()
   }
   const [state, dispatch] = useReducer(appReducer, initialState)
   const setNavMenu = (navMenuState) => {

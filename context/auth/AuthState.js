@@ -9,8 +9,12 @@ function AuthState ({ children }) {
     usuario: {}
   }
   const [state, dispatch] = useReducer(authReducer, initialState)
-
-  return <authContext.Provider value={{}}>{children}</authContext.Provider>
+  const registrarUsuario = (usuario) => console.log(usuario)
+  return (
+    <authContext.Provider value={{ registrarUsuario }}>
+      {children}
+    </authContext.Provider>
+  )
 }
 
 AuthState.propTypes = {
