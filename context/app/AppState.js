@@ -5,13 +5,13 @@ import appReducer from './appReducer'
 
 import { SET_NAVMENU, SET_USERMENU } from './appTypes'
 
-import initDB from '../../helper/initDB'
+import db from '../../config/db'
 
 function AppState ({ children }) {
   const initialState = {
     navMenu: false,
     userMenu: false,
-    db: initDB()
+    db: db()
   }
   const [state, dispatch] = useReducer(appReducer, initialState)
   const setNavMenu = (navMenuState) => {
@@ -30,7 +30,8 @@ function AppState ({ children }) {
     navMenu: state.navMenu,
     setNavMenu,
     userMenu: state.userMenu,
-    setUserMenu
+    setUserMenu,
+    db: state.db
   }}>{children}</appContext.Provider>
 }
 

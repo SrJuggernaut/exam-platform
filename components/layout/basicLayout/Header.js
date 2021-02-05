@@ -9,7 +9,6 @@ import appContext from '../../../context/app/appContext'
 const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
-  width: 100vw;
   background-color: var(--color-brand);
   color: var(--color-light);
   padding-bottom: calc(var(--spacer) / 2);
