@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 import bp from '../../../helper/breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,10 +15,10 @@ const FooterContent = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacer);
-  @media(min-width: ${bp.xsm}){
+  @media (min-width: ${bp.xsm}) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media(min-width: ${bp.sm}){
+  @media (min-width: ${bp.sm}) {
     grid-template-columns: repeat(3, 1fr);
   }
 `
@@ -31,7 +32,7 @@ const FooterHeading = styled.span`
 const FooterList = styled.ul`
   padding-top: var(--spacer);
   padding-bottom: var(--spacer);
-  li{
+  li {
     line-height: 1.5;
   }
 `
@@ -39,11 +40,6 @@ const FooterCopy = styled.div`
   text-align: center;
   padding-right: var(--spacer);
   padding-left: var(--spacer);
-  a{
-    &:hover{
-      color: var(--color-contrast)
-    }
-  }
 `
 function Footer (props) {
   return (
@@ -68,9 +64,13 @@ function Footer (props) {
           </FooterList>
         </FooterColumn>
         <FooterColumn>
-          <FooterHeading className="h4">Fugiat, amet!</FooterHeading>
+          <FooterHeading className="h4">Informacion</FooterHeading>
           <FooterList>
-            <li>Nisi veniam id repellendus.</li>
+            <li>
+              <Link href="/panel">
+                <a>Panel</a>
+              </Link>
+            </li>
             <li>Accusamus eveniet veniam nam?</li>
             <li>Illum voluptate itaque vel.</li>
             <li>Vero expedita illum quos.</li>
@@ -78,7 +78,11 @@ function Footer (props) {
         </FooterColumn>
       </FooterContent>
       <FooterCopy className="container">
-        <span>Hecho con <FontAwesomeIcon icon={['fal', 'heart']} fixedWidth /> y <FontAwesomeIcon icon={['fal', 'coffee']} fixedWidth /> por <a href="https://github.com/SrJuggernaut">SrJuggernaut</a></span>
+        <span>
+          Hecho con <FontAwesomeIcon icon={['fal', 'heart']} fixedWidth /> y{' '}
+          <FontAwesomeIcon icon={['fal', 'coffee']} fixedWidth /> por{' '}
+          <a href="https://github.com/SrJuggernaut">SrJuggernaut</a>
+        </span>
       </FooterCopy>
     </FooterWrapper>
   )

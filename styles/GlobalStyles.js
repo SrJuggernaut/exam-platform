@@ -195,7 +195,7 @@ function GlobalStyles (props) {
           font-weight: 700;
           color: inherit;
           &:hover {
-            color: var(--color-brand);
+            color: var(--color-contrast);
             cursor: pointer;
           }
         }

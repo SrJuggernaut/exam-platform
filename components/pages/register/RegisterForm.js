@@ -32,8 +32,8 @@ const registerSchema = yup.object().shape({
   tipoUsuario: yup.string().required('El tipo de usuario es requerido'),
   correoElectrionico: yup
     .string()
-    .email('Inserta un email valido')
-    .required('El email es obligatorio'),
+    .email('Inserta un correo electronico valido')
+    .required('El correo electronico es obligatorio'),
   contrasena: yup
     .string()
     .min(6, 'La contraseña debe tener al menos 6 caracteres')

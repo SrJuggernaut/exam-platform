@@ -6,6 +6,7 @@ import {
   faBars,
   faCoffee,
   faHeart,
+  faTimes,
   faUser
 } from '@fortawesome/pro-light-svg-icons'
 
@@ -15,7 +16,7 @@ import AuthState from '../context/auth/AuthState'
 import GlobalStyles from '../styles/GlobalStyles'
 import FontAwesomeStyles from '../styles/FontAwesomeStyles'
 
-library.add(faBars, faUser, faHeart, faCoffee)
+library.add(faBars, faUser, faHeart, faCoffee, faTimes)
 
 function MyApp ({ Component, pageProps }) {
   return (

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from '@emotion/styled'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
 
+import authContext from '../../../context/auth/authContext'
 import Button from '../../../components/ui/Button'
 import Alert from '../../ui/Alert'
 
@@ -32,8 +33,9 @@ const LoginSchema = yup.object().shape({
     .required('La contraseña es obligatoria')
 })
 function RegisterForm (props) {
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const { iniciarSesion, alerta } = useContext(authContext)
+  const handleSubmit = (credenciales) => {
+    iniciarSesion(credenciales)
   }
   return (
     <Formik
@@ -46,7 +48,7 @@ function RegisterForm (props) {
     >
       {({ errors, touched }) => (
         <Form>
-
+          {alerta ? <Alert>{alerta}</Alert> : null }
           <InputContainer>
             <label htmlFor="correoElectrionico">Correo electrionico</label>
             {errors.correoElectrionico && touched.correoElectrionico ? <Alert>{errors.correoElectrionico}</Alert> : null}

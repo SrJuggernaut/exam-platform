@@ -9,7 +9,7 @@ import UserMenu from './menu/UserMenu'
 const MenuWrapper = styled.div`
   position: sticky;
   top: 52px;
-  width: 100vw;
+  width: 100%;
   color: var(--color-light);
 `
 

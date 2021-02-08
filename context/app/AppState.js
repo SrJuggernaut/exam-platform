@@ -11,7 +11,7 @@ function AppState ({ children }) {
   const initialState = {
     navMenu: false,
     userMenu: false,
-    db: db()
+    db: db
   }
   const [state, dispatch] = useReducer(appReducer, initialState)
   const setNavMenu = (navMenuState) => {
