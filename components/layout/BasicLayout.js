@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import propTypes from 'prop-types'
 import styled from '@emotion/styled'
 import Header from './basicLayout/Header'
@@ -10,10 +10,12 @@ const Body = styled.div`
 `
 
 function BasicLayout ({ children }) {
+  const [navMenu, setNavMenu] = useState(false)
+  const [userMenu, setUserMenu] = useState(false)
   return (
     <>
-      <Header />
-      <Menu />
+      <Header navMenu={navMenu} setNavMenu={setNavMenu} userMenu={userMenu} setUserMenu={setUserMenu} />
+      <Menu navMenu={navMenu} userMenu={userMenu} />
       <Body className="container">
         {children}
       </Body>

@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import propTypes from 'prop-types'
 import Img from 'next/image'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import appContext from '../../../context/app/appContext'
 
 const HeaderWrapper = styled.header`
   position: sticky;
@@ -41,9 +40,7 @@ const Buttton = styled.button`
     color: var(--color-light-var);
   }
 `
-function Header (props) {
-  const app = useContext(appContext)
-  const { navMenu, setNavMenu, userMenu, setUserMenu } = app
+function Header ({ userMenu, setUserMenu, navMenu, setNavMenu }) {
   const handleNavButtonClick = () => {
     setNavMenu(!navMenu)
     setUserMenu(false)
@@ -79,6 +76,13 @@ function Header (props) {
       </HeaderContent>
     </HeaderWrapper>
   )
+}
+
+Header.propTypes = {
+  userMenu: propTypes.bool.isRequired,
+  setUserMenu: propTypes.func.isRequired,
+  navMenu: propTypes.bool.isRequired,
+  setNavMenu: propTypes.func.isRequired
 }
 
 export default Header
